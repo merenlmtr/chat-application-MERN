@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Chat from "./components/Chat";
+import Navbar from "./components/Navbar";
+import RightBar from "./components/RightBar";
+import Sidebar from "./components/Sidebar";
+import Login from "./Login";
+import Register from "./Register";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="bg-mefour backimage">
+        {/* <Login /> */}
+
+        {/* <Register /> */}
+
+        <div className="container mx-auto shadow-lg rounded-lg">
+          <Navbar />
+          <div className="flex flex-row justify-between">
+            <Sidebar />
+            <Chat />
+            <RightBar />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
