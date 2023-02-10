@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
 
@@ -7,7 +8,7 @@ const Login = () => {
 
     return (
         <>
-            <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+            <div className="min-h-screen bg-mefour py-6 flex flex-col justify-center sm:py-12">
                 <div className="relative py-3 sm:max-w-xl sm:mx-auto">
                     <div
                         className="absolute inset-0 bg-gradient-to-r  from-meone to-mefour shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -30,7 +31,7 @@ const Login = () => {
                                     <div className="relative">
                                         <button onClick={() => setUser(username)} className="bg-meone text-white rounded-md px-2 py-1">Submit</button>
                                     </div>
-                                    <div className='text-sm'>Don't have an Account? <a href='/' className='text-methree underline font-bold'>Register</a></div>
+                                    <div className='text-sm'>Don't have an Account? <Link to='/register' className='text-methree underline font-bold'>Register</Link></div>
                                 </div>
                             </div>
                         </div>

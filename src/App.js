@@ -1,28 +1,17 @@
-import Chat from "./components/Chat";
-import Navbar from "./components/Navbar";
-import RightBar from "./components/RightBar";
-import Sidebar from "./components/Sidebar";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 import Login from "./Login";
 import Register from "./Register";
 
 function App() {
   return (
-    <>
-      <div className="bg-mefour backimage">
-        {/* <Login /> */}
-
-        {/* <Register /> */}
-
-        <div className="container mx-auto shadow-lg rounded-lg">
-          <Navbar />
-          <div className="flex flex-row justify-between">
-            <Sidebar />
-            <Chat />
-            <RightBar />
-          </div>
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path='/' element={<Dashboard />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
