@@ -2,6 +2,7 @@ const express = require('express')
 const connectDB = require('./config/DB')
 require('dotenv').config();
 const PORT = process.env.PORT || 8000
+const authRoute = require('./controllers/authController')
 
 // Connection to Database
 connectDB();
@@ -18,4 +19,5 @@ app.use(express.urlencoded({ extended: false }))
 app.listen(PORT, () => console.log(`Sever running on port ${PORT}`));
 
 //Routes
+app.use('/api/auth', authRoute)
 app.all("*", (req, res) => res.send("Silence is Golden"))
