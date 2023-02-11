@@ -9,7 +9,7 @@ const Navbar = () => {
                     type="text"
                     name=""
                     id=""
-                    placeholder="search IRL"
+                    placeholder="search message"
                     className="rounded-2xl bg-gray-100 py-3 px-5 w-full"
                 />
             </div>
