@@ -6,8 +6,12 @@ import Register from "./Register";
 
 import { loadUser } from './actions/userActions';
 import store from './store';
+import { useSelector } from 'react-redux';
+
 
 function App() {
+
+  const { isAuthenticated } = useSelector(state => state.auth)
 
   useEffect(() => {
     store.dispatch(loadUser())
@@ -16,9 +20,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Dashboard />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+        <Route exact path='/' element={isAuthenticated ? <Dashboard /> : <Login />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/register' element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

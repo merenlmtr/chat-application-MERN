@@ -13,7 +13,7 @@ const Login = ({ }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { isAuthenticated, error } = useSelector(state => state.auth)
+    const { isAuthenticated, error, loading } = useSelector(state => state.auth)
 
     useEffect(() => {
 
@@ -56,7 +56,7 @@ const Login = ({ }) => {
                                             <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                         </div>
                                         <div className="relative">
-                                            <button type='submit' className="bg-meone text-white rounded-md px-2 py-1">Submit</button>
+                                            <button type='submit' className="bg-meone text-white rounded-md px-2 py-1">{loading ? 'Signing In...' : 'Submit'}</button>
                                         </div>
                                         <div className='text-sm'>Don't have an Account? <Link to='/register' className='text-methree underline font-bold'>Register</Link></div>
                                     </div>
