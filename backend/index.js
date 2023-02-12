@@ -3,6 +3,7 @@ const connectDB = require('./config/DB')
 require('dotenv').config();
 const PORT = process.env.PORT || 8000
 const authRoute = require('./controllers/authController')
+const userRoute = require('./controllers/userController')
 const convoRoute = require('./controllers/conversation')
 const messageRoute = require('./controllers/message')
 const { isAuthenticatedUser } = require('./middleware/auth')
@@ -26,6 +27,7 @@ app.listen(PORT, () => console.log(`Sever running on port ${PORT}`));
 
 //Routes
 app.use('/api/auth', authRoute)
+app.use('/api/user', isAuthenticatedUser, userRoute)
 app.use('/api/conversation', isAuthenticatedUser, convoRoute)
 app.use('/api/message', isAuthenticatedUser, messageRoute)
 app.all("*", (req, res) => res.send("Silence is Golden"))
