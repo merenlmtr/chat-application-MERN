@@ -15,4 +15,14 @@ router.get("/me", async (req, res) => {
 
 })
 
+//GET A USER
+router.get("/users/:id", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).select('-password')
+        res.status(200).json(user)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router;

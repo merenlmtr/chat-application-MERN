@@ -12,7 +12,7 @@ const Navbar = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { user, loading } = useSelector(state => state.auth)
+    const { user } = useSelector(state => state.auth)
 
     const logoutHandler = () => {
         dispatch(logout());

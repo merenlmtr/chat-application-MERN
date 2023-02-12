@@ -1,2 +1,5 @@
 PORT = 8800
-MONGO_URI = mongodb://localhost:27017/<your-database-name>
+MONGO_URI = <your-database-name>
+JWT_SECRET = <your-JWT0Secret>
+JWT_EXPIRE_TIME = Jwt-Expiry-Time eg:-1d
+COOKIE_EXPIRE_TIME = Cookie-Expiry-Time eg:-1
