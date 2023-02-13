@@ -4,14 +4,14 @@
 
 The MERN stack which consists of Mongo DB, Express.js, Node.js, and React.js is a popular stack for building full-stack web-based applications because of its simplicity and ease of use. In recent years, with the explosive popularity and the growing maturity of the JavaScript ecosystem, the MERN stack has been the goto stack for a large number of web applications. This stack is also highly popular among newcomers to the JS field because of how easy it is to get started with this stack
 
-This repo consists of a Chat Application built using MERN stack, user authentication using JWT token and cookies. I build this app when I was learning the stack and also wanted to explore the Real-Time communication using [SocketIO](https://socket.io/). But due to my busy schedule with other stack i was unable to implement the socketIO. If time permits I will surely try to implement it. I have left it here for anyone new to the stack so that they can use this repo as a guide.
+This repo consists of a Chat Application built using MERN stack and user authentication using JWT token and cookies. The chat system uses the [SocketIO](https://socket.io/) for real-time communication between the client.
 
 ### Features
 
 * User Login and Register
 * Authentication using JWT Tokens
 * React State management using REDUX
-* Chat with other users
+* Realtime Chat
 
 ### How to use it
 
