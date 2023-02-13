@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import Chat from '../chat/Chat'
 import EmptyChat from '../chat/EmptyChat'
 import Conversation from './Conversation'
+import { io } from 'socket.io-client'
+import { useAlert } from 'react-alert'
 
 const Sidebar = () => {
 
@@ -11,10 +13,14 @@ const Sidebar = () => {
     const [currentChat, setCurrentChat] = useState(null)
     const [messages, setMessages] = useState([])
     const [newmessage, setNewmessage] = useState("")
+    const [arrivalmessage, setArrivalmessage] = useState(null)
+    const socket = useRef()
     const scrollRef = useRef()
 
     const { user } = useSelector(state => state.auth)
+    const alert = useAlert();
 
+    // Get User Conversations from DB useEffect
     useEffect(() => {
         const getConversation = async () => {
             try {
@@ -27,6 +33,7 @@ const Sidebar = () => {
         getConversation();
     }, [user._id])
 
+    // Get messages from DB useEffect
     useEffect(() => {
         const getMessages = async () => {
             try {
@@ -39,11 +46,36 @@ const Sidebar = () => {
         getMessages();
     }, [currentChat]);
 
+    // Message Scrolling useEffect
     useEffect(() => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" })
 
     }, [messages])
 
+    //Socket IO useEffect
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900");
+        socket.current.on("getMessage", data => {
+            setArrivalmessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt: Date.now()
+            })
+        })
+    }, []);
+
+    useEffect(() => {
+        socket.current.emit("addUser", user._id);
+        socket.current.on("getUsers", (users) => {
+            console.log(users)
+        })
+    }, [user._id]);
+
+    useEffect(() => {
+        arrivalmessage && currentChat?.members.includes(arrivalmessage.sender) && setMessages((prev) => [...prev, arrivalmessage])
+    }, [arrivalmessage, currentChat])
+
+    // New message send SubmitHandler
     const handleSubmit = async (e) => {
         e.preventDefault();
         const message = {
@@ -51,6 +83,17 @@ const Sidebar = () => {
             text: newmessage,
             conversationId: currentChat._id
         }
+        if (newmessage === '') {
+            alert.error("You cannot send blank message");
+            return null;
+        }
+
+        const receiverId = currentChat.members.find(member => member !== user._id);
+        socket.current.emit("sendMessage", {
+            senderId: user._id,
+            receiverId,
+            text: newmessage
+        })
 
         try {
             const res = await axios.post("/message", message)
