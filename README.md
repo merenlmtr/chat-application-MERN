@@ -1,6 +1,9 @@
 # MERN realtime Chat Application with Authentication
 
-![alt text](https://img.shields.io/badge/version-0.1-blue)
+![App](https://img.shields.io/badge/version-0.1-blue)
+![React JS](https://img.shields.io/badge/React-v18.2.0-blue)
+![Express JS](https://img.shields.io/badge/Express-v4.18.2-blue)
+
 
 ### Introduction
 
