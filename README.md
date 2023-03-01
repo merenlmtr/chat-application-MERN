@@ -1,7 +1,8 @@
 # MERN realtime Chat Application with Authentication
 
 ![App](https://img.shields.io/badge/version-0.1-blue)
-![React JS](https://img.shields.io/badge/React-v18.2.0-blue)
+![Node JS](https://img.shields.io/badge/NodeJS-v16.15.1-blue)
+![npm](https://img.shields.io/badge/npm-v8.13.2-blue)
 ![Express JS](https://img.shields.io/badge/Express-v4.18.2-blue)
 
 
