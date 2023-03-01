@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import { login, clearErrors } from './actions/userActions'
 
-const Login = ({ }) => {
+const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
@@ -29,7 +29,8 @@ const Login = ({ }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(login(email, password))
+        const loginsuccess = dispatch(login(email, password))
+        !loginsuccess && alert.error(error);
     }
 
     return (
