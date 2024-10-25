@@ -28,3 +28,7 @@ You can have this application up and running with just a few steps because it ha
 4. To run the socket server, `cd socket` to the socket directory and execute `npm run socket`
 5. **NOTE** Before running the backend server you need to rename the `.env(sample)` file to `.env` and change the necessary environment variable.
 6. Run the backend server, `cd backend` to the backend directory and execute `npm run server`
+
+### Contributions
+
+I am no longer actively maintaining this repo. Feel free to contribute by submitting pull requests, opening issues, or suggesting new components.
